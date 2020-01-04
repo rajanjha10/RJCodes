@@ -54,7 +54,7 @@ function findAllChildren(nodes, result){
 
 $(document).ready(function(){
 	$.ajax({ 
-		url: "http://voterep.000webhostapp.com/fetch.php",
+		url: "https://voterep.000webhostapp.com/fetch.php",
 		method:"POST",
 		dataType: "json",
 		data:({table: localStorage.getItem('table')}),       

@@ -6,7 +6,7 @@ $(window).on("load",function(){
 
 $(document).ready(function(){
 	$.ajax({ 
-		url: "http://voterep.000webhostapp.com/github.php",
+		url: "https://voterep.000webhostapp.com/github.php",
 		method:"POST",
 		dataType: "html",
 		data:{id: localStorage.getItem('id')},       
