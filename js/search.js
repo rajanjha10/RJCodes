@@ -1,9 +1,6 @@
 $(window).on("load",function(){
 	$(".loading").fadeOut(500);
 	$('h1').text(localStorage.getItem('title'));
-	console.log(localStorage.getItem('table'));
-	console.log(localStorage.getItem('title'));
-	
 });
 
 var search = function(e) {
