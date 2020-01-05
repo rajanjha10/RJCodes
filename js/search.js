@@ -9,6 +9,7 @@ var search = function(e) {
 	if(pattern === ""){
 		findAllChildren($('#treeview').treeview('getSelected'), results);
 		makeTable(results);
+		$('#treeview').treeview('search', [ pattern, options ]);
 		return;
 	}
 	var options = {
