@@ -5,21 +5,25 @@ $(window).on("load",function(){
 
 var search = function(e) {
 	var pattern = $('.searchTerm').val();
+	var results = [];
+	if(pattern === ""){
+		findAllChildren($('#treeview').treeview('getSelected'), results);
+		makeTable(results);
+		return;
+	}
 	var options = {
 		ignoreCase: true,
 		exactMatch: false,
 		revealResults: false
 	};
-	var results = $('#treeview').treeview('search', [ pattern, options ]);
+	results = $('#treeview').treeview('search', [ pattern, options ]);
 	makeTable(results);
 }
 
 function viewCode(ele){
 	localStorage.setItem('id', ele.id);
 	localStorage.setItem('code', $("#"+ele.id).children('td').text());
-	console.log(localStorage.getItem('title'));
-	console.log(localStorage.getItem('id'));
-    window.location.href = "code.html";
+	window.location.href = "code.html";
 }
 
 function findDisplay(nodes){

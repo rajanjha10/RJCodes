@@ -4,6 +4,14 @@
   margin-bottom: 40px;
 }
 
+@media (max-width: 767px){
+  table{
+    width: 100%;
+  }
+
+}
+
+
 tr{
   width: 100%;
   margin-bottom: 10px;
@@ -22,6 +30,8 @@ tr:hover{
 td{
   padding-top: 8px;
 }
+
+
 
 .searchTerm {
   width: 100%;
