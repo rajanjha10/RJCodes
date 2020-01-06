@@ -24,7 +24,7 @@ var search = function(e) {
 function viewCode(ele){
 	localStorage.setItem('id', ele.id);
 	localStorage.setItem('code', $("#"+ele.id).children('td').text());
-	window.location.href = "code.html";
+	window.open("code.html", '_blank');
 }
 
 function findDisplay(nodes){
