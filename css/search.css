@@ -4,13 +4,9 @@
   margin-bottom: 40px;
 }
 
-@media (max-width: 767px){
-  table{
-    width: 100%;
-  }
-
+table{
+  width: 100%;
 }
-
 
 tr{
   width: 100%;
