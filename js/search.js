@@ -35,11 +35,13 @@ function findDisplay(nodes){
 
 function makeTable(result){
 	$("#searchresult").empty();
+	var dict = {};
 	jQuery.each(result, function(i,data) {
-		if(data.child==0){
+		if(data.child==0 && dict[data.text]!=1){
 			$("#searchresult").append("<tr onclick=viewCode(this) class='col-md-12'><td>" + data.text + "</td></tr>");
 			$("#searchresult tr:last").attr('id', data.id);
 			$("#searchresult tr:last").slideDown('slow'); 
+			dict[data.text] = 1;
 		} 
 	});
 }
