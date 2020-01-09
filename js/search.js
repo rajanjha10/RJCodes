@@ -22,9 +22,9 @@ var search = function(e) {
 }
 
 function viewCode(ele){
-	localStorage.setItem('id', ele.id);
-	localStorage.setItem('code', $("#"+ele.id).children('td').text());
-	window.open("code.html", '_blank');
+	var name = $("#"+ele.id).children('td').text();
+	var url = "code.html?id=" + encodeURIComponent(ele.id) + "&name=" + encodeURIComponent(name);
+	window.open(url, '_blank');
 }
 
 function findDisplay(nodes){
