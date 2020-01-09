@@ -108,6 +108,7 @@ body{
 
 .color span{
 	display: inline-block;
+	color:#000;
 	opacity: 0;
 }
 
