@@ -2,6 +2,11 @@ $(window).on("load",function(){
 	$(".loading").fadeOut(500);
 });
 
+function showCode(ele){
+	ele.classList.toggle("active");
+	$('pre').toggle();
+}
+
 $(document).ready(function(){
 	var params = window.location.search.split('?')[1].split('&');
     var id = decodeURIComponent(params[0].split('=')[1]);
@@ -15,7 +20,7 @@ $(document).ready(function(){
 		data:{id: id},       
 		success: function(data)  
 		{
-			$('.code').html(data);
+			$('#content').html(data);
 		}   
 	});
 });
