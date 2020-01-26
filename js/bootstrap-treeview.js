@@ -282,7 +282,7 @@
 				node.state.checked = false;
 			}
 
-			if(level==1 && screen && screen.width > 480) {
+			if(level==1) {
 				node.state.selected = true;
 				findDisplay(node.nodes);
 			}

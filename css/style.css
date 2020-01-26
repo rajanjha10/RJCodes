@@ -17,7 +17,7 @@ body{
 .header .caption h1{
 	margin-bottom:20px;
 	font-size:50px;
-	font-family:cursive;
+	font-family:cursive!important;
 	margin-top: 20px;
 	font-weight: 500;
 }
