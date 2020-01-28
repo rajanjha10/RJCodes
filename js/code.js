@@ -4,7 +4,7 @@ $(window).on("load",function(){
 
 function showCode(ele){
 	ele.classList.toggle("active");
-	$('pre').toggle();
+	$('#show').toggle();
 }
 
 $(document).ready(function(){

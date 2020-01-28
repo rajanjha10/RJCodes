@@ -118,8 +118,8 @@ body{
 
 #code{
 	cursor: pointer;
-	background-color: #eee;
-	color: #444;
+	background-color: rgb(40, 41, 35);
+	color: #ccc;
 	cursor: pointer;
 	padding: 18px;
 	margin: 10px auto;
@@ -132,7 +132,8 @@ body{
 }
 
 .active, #code:hover {
-  background-color: #ccc; 
+  background-color: #ccc;
+  color: rgb(40, 41, 35); 
 }
 
 #code:after {
@@ -149,10 +150,11 @@ body{
 
 .Box-body{
 	border: 1px solid #e1e4e8;
+	background-color: #fff;
 }
 
-pre{
-	background-color: #f6f8fa;
+#show{
+	background-color: #fff;
 	border: 2px solid rgb(40,41,35);
 	padding: 20px;
 	display: none;
