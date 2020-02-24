@@ -9,9 +9,13 @@ body{
 	margin-bottom:50px;
 }
 
+.header .container{
+	width: 100%;
+}
+
 .header .caption{
 	color:#fff;
-	text-align:center
+	text-align:center;
 }
 
 .header .caption h1{
@@ -24,7 +28,13 @@ body{
 
 .header .caption h4{
 	font-size:30px;
-	color:#eee
+	color:#eee;
+}
+
+.header span{
+	font-size:50px;
+	color:#fff;
+	margin-top: 24px;
 }
 
 #sites{
@@ -116,13 +126,13 @@ body{
 	opacity: 0;
 }
 
-#code{
+#code, #disqus{
 	cursor: pointer;
 	background-color: rgb(40, 41, 35);
 	color: #ccc;
 	cursor: pointer;
 	padding: 18px;
-	margin: 10px auto;
+	margin-top: 20px;
 	width: 100%;
 	border: none;
 	text-align: center;
@@ -131,12 +141,12 @@ body{
 	transition: 0.4s;
 }
 
-.active, #code:hover {
+.active, #code:hover. #disqus:hover {
   background-color: #ccc;
   color: rgb(40, 41, 35); 
 }
 
-#code:after {
+#code:after, #disqus:after {
   content: '\02795';
   font-size: 13px;
   color: #777;
@@ -150,7 +160,7 @@ body{
 
 .Box-body{
 	border: 1px solid #e1e4e8;
-	background-color: #fff;
+	background-color: #fff; 
 }
 
 #show{
@@ -158,6 +168,12 @@ body{
 	border: 2px solid rgb(40,41,35);
 	padding: 20px;
 	display: none;
+	margin: 10px auto; 
+}
+
+#disqus_thread{
+	display: none;
+	margin-top: 30px;
 }
 
 footer{
