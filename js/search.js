@@ -1,5 +1,4 @@
 $(window).on("load",function(){
-	$(".loading").fadeOut(500);
 	$('h1').text(localStorage.getItem('title'));
 });
 
@@ -65,6 +64,7 @@ $(document).ready(function(){
 		success: function(data)  
 		{
 			$('#treeview').treeview({data: data, showBorder: false});
+			$(".loading").fadeOut(500);
 		}   
 	});
 	$('.searchTerm').on('keyup', search);

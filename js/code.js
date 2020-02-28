@@ -1,5 +1,4 @@
 $(window).on("load",function(){
-	$(".loading").fadeOut(500);
 });
 
 function showCode(ele){
@@ -30,6 +29,7 @@ $(document).ready(function(){
 		success: function(data)  
 		{
 			$('#content').html(data);
+			$(".loading").fadeOut(500);
 		}   
 	});
 
