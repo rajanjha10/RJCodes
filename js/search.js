@@ -1,5 +1,4 @@
 $(window).on("load",function(){
-	$('h1').text(localStorage.getItem('title'));
 });
 
 var search = function(e) {
@@ -21,9 +20,8 @@ var search = function(e) {
 }
 
 function viewCode(ele){
-	var name = $("#"+ele.id).children('td').text();
-	var url = "code.html?id=" + encodeURIComponent(ele.id) + "&name=" + encodeURIComponent(name);
-	window.open(url, '_blank');
+	var url = "code.html?" + encodeURIComponent(ele.id);
+	window.location.href = url;
 }
 
 function findDisplay(nodes){
@@ -53,19 +51,35 @@ function findAllChildren(nodes, result){
 			findAllChildren(nodes[i].nodes, result);
 	}
 }
-	
 
 $(document).ready(function(){
+	var tableName = window.location.search.split('?')[1];
+	if(tableName==undefined)
+		window.location.href = "index.html";
+    
+    var name = tableName.split('_');
+    var s = "";
+    jQuery.each(name, function(i, data) {
+    	s += data.toUpperCase() + " ";
+	});
+	$('h2').text(s); 
+
 	$.ajax({ 
 		url: "https://voterep.000webhostapp.com/fetch.php",
 		method:"POST",
 		dataType: "json",
-		data:({table: localStorage.getItem('table')}),       
+		data:({table: tableName}),
+		timeout: 5000,       
 		success: function(data)  
 		{
-			$('#treeview').treeview({data: data, showBorder: false});
+			$('#treeview').treeview({data: data, showBorder: true});
 			$(".loading").fadeOut(500);
-		}   
+		},
+		error: function(data){
+			alert("File Not Found");
+			window.location.href = "index.html";
+    	}   
 	});
+
 	$('.searchTerm').on('keyup', search);
 });

@@ -29,10 +29,12 @@ tr{
   padding: 5px;
   display: none;
   cursor: pointer;
+  background-color: #fff;
 }
 
 tr:hover{
   border: 5px solid rgb(50, 50, 50); 
+  font-weight: 800;
 }
 
 td{
@@ -57,7 +59,7 @@ tbody::-webkit-scrollbar-thumb {
   width: 100%;
   border: 3px solid #00B4CC;
   border-right: none;
-  padding: 5px;
+  padding: 5px 5px 5px 15px;
   height: 50px;
   border-radius: 5px 0 0 5px;
   outline: none;
@@ -66,6 +68,7 @@ tbody::-webkit-scrollbar-thumb {
 
 .searchTerm:focus{
   color: rgb(50, 50, 50);
+  font-weight: 800;
 }
 
 .searchButton {
