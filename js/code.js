@@ -25,7 +25,6 @@ function fix(name){
 
 function make_path(path){
 	path = path.split('/');
-	console.log(path);
 	
 	var tableName = decodeURIComponent(path[7]).split(" ");
 	var url = "";
