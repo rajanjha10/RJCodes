@@ -5,7 +5,7 @@ $(window).on("load",function(){
 	document.addEventListener('touchmove', handleTouchMove, false);
 
 	var xDown = null;
-	                                                        
+
 	function getTouches(evt) {
 	  return evt.touches ||             // browser API
 	         evt.originalEvent.touches; // jQuery
@@ -158,6 +158,7 @@ $(document).ready(function(){
 				$('#content').html($(data).filter('#github'));
 				history.pushState(null, '', 'code.html?' + id);
 				$(".loading").fadeOut(500);
+				flag = 0;
 
 			},
 			error: function(data){
