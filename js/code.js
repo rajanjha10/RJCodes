@@ -34,16 +34,6 @@ $(window).on("load",function(){
 	};
 });
 
-$(window).scroll(function() {
-    var winScrollTop = $(window).scrollTop();
-    var winHeight = $(window).height();
-    var floaterHeight = $('.float').outerHeight(true);
-    var fromBottom = 250;
-
-    var top = winScrollTop + winHeight - floaterHeight - fromBottom;
-    $('.float').css({'top': top + 'px'});
-});
-
 function showCode(ele){
 	ele.classList.toggle("active");
 	$('#show').toggle();
@@ -90,6 +80,19 @@ function make_path(path){
 	$("#path").append("<h3><a href='" + url + "'><span>" + path[7] + "</span></a> / " + s +"</h3>");	
 }
 
+function create_zoom(){
+	var zoomin = $('<button type="submit" class="zoom zoom-in btn btn-link" onclick="zoom(1)"><span class="fa fa-search-plus"></span></button>');
+    zoomin.appendTo($("pre"));
+    var zoomout = $('<button type="submit" class="zoom zoom-out btn btn-link" onclick="zoom(-1)"><span class="fa fa-search-minus"></span></button>');
+    zoomout.appendTo($("pre"));
+}
+
+function zoom(mul){
+	var v = $('table tr').css("font-size");
+	v = (parseInt(v) + (5*mul)).toString();
+	$('table tr').css("font-size", v + "px");
+}
+
 function loadDisqus(ele) {
 	ele.classList.toggle("active");
 	$('#disqus_thread').toggle();
@@ -114,6 +117,7 @@ $(document).ready(function(){
 			make_path(path);
 			$('#content').html($(data).filter('#github'));
 			$(".loading").fadeOut(500);
+			create_zoom();
 		},
 		error: function(data){
 			alert("File Not Found");
@@ -125,6 +129,7 @@ $(document).ready(function(){
 		this.page.url = window.location.search;  // Replace PAGE_URL with your page's canonical URL variable
 		this.page.identifier = id; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 	};
+
 
 	$('.nav a').click(function(event){
 		event.preventDefault();
