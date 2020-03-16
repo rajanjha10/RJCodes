@@ -17,17 +17,19 @@ $(window).on("load",function(){
 	};                                                
 
 	function handleTouchMove(evt) {
-	    if ( ! xDown || flag==1) {
-	        return;
+		console.log(flag)
+	    
+	    if ( ! xDown ) {
+	    	return;
 	    }
 
 	    var xUp = evt.touches[0].clientX;
 	    var xDiff = xDown - xUp;
-	    
-	    if (Math.abs( xDiff ) > 50) {/*most significant*/
-	        if ( xDiff > 0 ) {
+	    console.log(xDiff);
+	    if (Math.abs( xDiff ) >= 30) {/*most significant*/
+	        if ( xDiff > 0 && flag!=-1) {
 	            $(".float-right").trigger("click"); 
-	        } else {
+	        } else if(xDiff <0 && flag!=1){
 	            $(".float-left").trigger("click");
 	        }                       
 	    }
@@ -136,14 +138,19 @@ $(document).ready(function(){
 	$('.nav a').click(function(event){
 		event.preventDefault();
 		var classList = event.currentTarget.className.split(/\s+/);
+		var f = 0;
 		for (var i = 0; i < classList.length; i++) {
-	    	if (classList[i] === 'float-left')
+	    	if (classList[i] === 'float-left'){
 	    		id = (parseInt(id)-1).toString();
-	    	if(classList[i] === 'float-right')
+	    		f = 1;
+	    	}
+	    	if(classList[i] === 'float-right'){
 	    		id = (parseInt(id)+1).toString();
+	    		f = -1;
+	    	}
 		}
 		$('.loading').fadeIn();
-		
+		console.log(id);
 		$.ajax({ 
 			url: "https://voterep.000webhostapp.com/github.php",
 			method:"POST",
@@ -158,13 +165,17 @@ $(document).ready(function(){
 				$('#content').html($(data).filter('#github'));
 				history.pushState(null, '', 'code.html?' + id);
 				$(".loading").fadeOut(500);
+				create_zoom();
 				flag = 0;
 
 			},
 			error: function(data){
-				event.currentTarget.style.display = "none";
+				console.log(event.currentTarget.style);
+				if(event.currentTarget.style)
+					event.currentTarget.style.display = "none";
 				$(".loading").fadeOut(500);
-				flag = 1;
+				flag = f;
+				id = (parseInt(id) + f).toString();
 			}
 		});
 	});
