@@ -1,6 +1,16 @@
 $(window).on("load",function(){
 });
 
+$(window).scroll(function() {
+    var winScrollTop = $(window).scrollTop();
+    var winHeight = $(window).height();
+    var floaterHeight = $('.float').outerHeight(true);
+    var fromBottom = 250;
+
+    var top = winScrollTop + winHeight - floaterHeight - fromBottom;
+    $('.float').css({'top': top + 'px'});
+});
+
 function showCode(ele){
 	ele.classList.toggle("active");
 	$('#show').toggle();
@@ -82,5 +92,40 @@ $(document).ready(function(){
 		this.page.url = window.location.search;  // Replace PAGE_URL with your page's canonical URL variable
 		this.page.identifier = id; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 	};
+
+	$('.nav a').click(function(event){
+		event.preventDefault();
+		var classList = event.currentTarget.className.split(/\s+/);
+		for (var i = 0; i < classList.length; i++) {
+	    	if (classList[i] === 'float-left')
+	    		id = (parseInt(id)-1).toString();
+	    	if(classList[i] === 'float-right')
+	    		id = (parseInt(id)+1).toString();
+		}
+		$('.loading').fadeIn();
+		console.log(id);
+		
+		$.ajax({ 
+			url: "https://voterep.000webhostapp.com/github.php",
+			method:"POST",
+			dataType: "html",
+			data:{id: id},
+			timeout: 10000,       
+			success: function(data)  
+			{
+				var path = $(data).filter('#name').text();
+				$('#path').empty();
+				make_path(path);
+				$('#content').html($(data).filter('#github'));
+				history.pushState(null, '', 'code.html?' + id);
+				$(".loading").fadeOut(500);
+
+			},
+			error: function(data){
+				event.currentTarget.style.display = "none";
+				$(".loading").fadeOut(500);
+			}
+		});
+	});
 
 });
