@@ -160,13 +160,14 @@ $(document).ready(function(){
 			success: function(data)  
 			{
 				var path = $(data).filter('#name').text();
-				$('#path').empty();
+				$("#path").empty();
 				make_path(path);
-				$('#content').html($(data).filter('#github'));
+				$("#content").html($(data).filter('#github'));
 				history.pushState(null, '', 'code.html?' + id);
 				$(".loading").fadeOut(500);
 				create_zoom();
 				flag = 0;
+				$(".float").show();
 
 			},
 			error: function(data){
