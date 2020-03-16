@@ -1,9 +1,11 @@
+var flag = 0;
+
 $(window).on("load",function(){
 	document.addEventListener('touchstart', handleTouchStart, false);        
 	document.addEventListener('touchmove', handleTouchMove, false);
 
-	var xDown = null;                                                        
-	
+	var xDown = null;
+	                                                        
 	function getTouches(evt) {
 	  return evt.touches ||             // browser API
 	         evt.originalEvent.touches; // jQuery
@@ -15,7 +17,7 @@ $(window).on("load",function(){
 	};                                                
 
 	function handleTouchMove(evt) {
-	    if ( ! xDown ) {
+	    if ( ! xDown || flag==1) {
 	        return;
 	    }
 
@@ -88,9 +90,9 @@ function create_zoom(){
 }
 
 function zoom(mul){
-	var v = $('table tr').css("font-size");
+	var v = $('pre table tr').css("font-size");
 	v = (parseInt(v) + (5*mul)).toString();
-	$('table tr').css("font-size", v + "px");
+	$('pre table tr').css("font-size", v + "px");
 }
 
 function loadDisqus(ele) {
@@ -161,6 +163,7 @@ $(document).ready(function(){
 			error: function(data){
 				event.currentTarget.style.display = "none";
 				$(".loading").fadeOut(500);
+				flag = 1;
 			}
 		});
 	});

@@ -70,6 +70,11 @@ body{
 	.float{
 		display: none;
 	}
+
+	.zoom{
+		display: none!important;
+	}
+
 }
 
 #path h3{
@@ -242,7 +247,7 @@ body{
 	position: relative; 
 }
 
-table tr{
+pre table tr{
 	font-size: 12px;
 }
 
