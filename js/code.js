@@ -26,7 +26,7 @@ $(window).on("load",function(){
 	    var xUp = evt.touches[0].clientX;
 	    var xDiff = xDown - xUp;
 	    console.log(xDiff);
-	    if (Math.abs( xDiff ) >= 30) {/*most significant*/
+	    if (Math.abs( xDiff ) >= 25) {/*most significant*/
 	        if ( xDiff > 0 && flag!=-1) {
 	            $(".float-right").trigger("click"); 
 	        } else if(xDiff <0 && flag!=1){
