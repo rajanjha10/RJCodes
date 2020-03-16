@@ -3,8 +3,7 @@ $(window).on("load",function(){
 	document.addEventListener('touchmove', handleTouchMove, false);
 
 	var xDown = null;                                                        
-	var yDown = null;
-
+	
 	function getTouches(evt) {
 	  return evt.touches ||             // browser API
 	         evt.originalEvent.touches; // jQuery
@@ -12,22 +11,19 @@ $(window).on("load",function(){
 
 	function handleTouchStart(evt) {
 	    const firstTouch = getTouches(evt)[0];                                      
-	    xDown = firstTouch.clientX;                                      
-	    yDown = firstTouch.clientY;                                      
+	    xDown = firstTouch.clientX;                                     
 	};                                                
 
 	function handleTouchMove(evt) {
-	    if ( ! xDown || ! yDown ) {
+	    if ( ! xDown ) {
 	        return;
 	    }
 
-	    var xUp = evt.touches[0].clientX;                                    
-	    var yUp = evt.touches[0].clientY;
-
+	    var xUp = evt.touches[0].clientX;
 	    var xDiff = xDown - xUp;
-	    var yDiff = yDown - yUp;
-
-	    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+	    
+	    console.log(xDiff);
+	    if (Math.abs( xDiff ) > 20) {/*most significant*/
 	        if ( xDiff > 0 ) {
 	            $(".float-right").trigger("click"); 
 	        } else {
@@ -35,8 +31,7 @@ $(window).on("load",function(){
 	        }                       
 	    }
 	    /* reset values */
-	    xDown = null;
-	    yDown = null;                                             
+	    xDown = null;                                             
 	};
 });
 
