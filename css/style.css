@@ -67,6 +67,13 @@ body{
 	font-size: 20px;
 }
 
+@media (max-width: 767px){
+
+	.float{
+		display: none;
+	}
+}
+
 #path h3{
 	color: #24292e;
 	padding-left: 10px;
