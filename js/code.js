@@ -17,15 +17,12 @@ $(window).on("load",function(){
 	};                                                
 
 	function handleTouchMove(evt) {
-		console.log(flag)
-	    
 	    if ( ! xDown ) {
 	    	return;
 	    }
 
 	    var xUp = evt.touches[0].clientX;
 	    var xDiff = xDown - xUp;
-	    console.log(xDiff);
 	    if (Math.abs( xDiff ) >= 25) {/*most significant*/
 	        if ( xDiff > 0 && flag!=-1) {
 	            $(".float-right").trigger("click"); 
@@ -84,17 +81,39 @@ function make_path(path){
 	$("#path").append("<h3><a href='" + url + "'><span>" + path[7] + "</span></a> / " + s +"</h3>");	
 }
 
-function create_zoom(){
-	var zoomin = $('<button type="submit" class="zoom zoom-in btn btn-link" onclick="zoom(1)"><span class="fa fa-search-plus"></span></button>');
+function create_icons(){
+	var zoomin = $('<button type="submit" class="icons zoom-in btn btn-link" onclick="zoom(1)"><span class="fa fa-search-plus"></span></button>');
     zoomin.appendTo($("pre"));
-    var zoomout = $('<button type="submit" class="zoom zoom-out btn btn-link" onclick="zoom(-1)"><span class="fa fa-search-minus"></span></button>');
+    var zoomout = $('<button type="submit" class="icons zoom-out btn btn-link" onclick="zoom(-1)"><span class="fa fa-search-minus"></span></button>');
     zoomout.appendTo($("pre"));
+    var copy = $('<button type="submit" class="icons copy btn btn-link" onclick="copy()" onmouseout="outFunc()"><span class="fa fa-copy"></span><span class="tooltiptext" id="myTooltip">Copy to clipboard</span></button>');
+    copy.appendTo($("pre"));
 }
 
 function zoom(mul){
 	var v = $('pre table tr').css("font-size");
 	v = (parseInt(v) + (5*mul)).toString();
 	$('pre table tr').css("font-size", v + "px");
+}
+
+function copy(){
+	var copyText = document.getElementById("show").innerText;
+	copyText = copyText.substring(0, copyText.length - 17);
+	var dummy = document.createElement("textarea");
+	document.body.appendChild(dummy);
+	dummy.value = copyText;
+	dummy.select();
+	document.execCommand("copy");
+	document.body.removeChild(dummy);
+	var tooltip = document.getElementById("myTooltip");
+	tooltip.innerHTML = "Copied";
+	tooltip.style.right = "-10px";
+}
+
+function outFunc() {
+	var tooltip = document.getElementById("myTooltip");
+	tooltip.innerHTML = "Copy to clipboard";
+	tooltip.style.right = "-50px";
 }
 
 function loadDisqus(ele) {
@@ -121,7 +140,7 @@ $(document).ready(function(){
 			make_path(path);
 			$('#content').html($(data).filter('#github'));
 			$(".loading").fadeOut(500);
-			create_zoom();
+			create_icons();
 		},
 		error: function(data){
 			alert("File Not Found");
@@ -150,7 +169,7 @@ $(document).ready(function(){
 	    	}
 		}
 		$('.loading').fadeIn();
-		console.log(id);
+		
 		$.ajax({ 
 			url: "https://voterep.000webhostapp.com/github.php",
 			method:"POST",
@@ -165,10 +184,11 @@ $(document).ready(function(){
 				$("#content").html($(data).filter('#github'));
 				history.pushState(null, '', 'code.html?' + id);
 				$(".loading").fadeOut(500);
-				create_zoom();
 				flag = 0;
-				$(".float").show();
-
+				create_icons();
+				if($(window).width() >= 601){
+					$(".arrows").show();
+				}
 			},
 			error: function(data){
 				console.log(event.currentTarget.style);

@@ -36,7 +36,7 @@ body{
 	padding: 5px;
 }
 
-.float{
+.arrows{
   	position: fixed;
     width: 50px;
     height: 50px;
@@ -67,11 +67,11 @@ body{
 
 @media only screen and (max-width: 600px){
 
-	.float{
+	.arrows{
 		display: none;
 	}
 
-	.zoom{
+	.icons{
 		display: none!important;
 	}
 
@@ -91,7 +91,7 @@ body{
 	font-size: 18px;
 }
 
-.zoom{
+.icons{
 	position: absolute!important;
 	top: 10px;
     width: 30px;
@@ -108,8 +108,33 @@ body{
 	right: 20px;
 }
 
-.zoom span{
+.copy{
+	right: 100px;
+}
+
+.icons span{
 	font-size: 30px;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  background-color: #555;
+  font-size: 15px!important;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 40px;
+  right: -50px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.copy:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 
 #sites{
