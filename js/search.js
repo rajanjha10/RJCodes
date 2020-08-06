@@ -69,7 +69,7 @@ $(document).ready(function(){
 		method:"POST",
 		dataType: "json",
 		data:({table: tableName}),
-		timeout: 5000,       
+		timeout: 50000,       
 		success: function(data)  
 		{
 			$('#treeview').treeview({data: data, showBorder: true});
