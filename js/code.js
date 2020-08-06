@@ -133,7 +133,7 @@ $(document).ready(function(){
 		method:"POST",
 		dataType: "html",
 		data:{id: id},
-		timeout: 10000,       
+		timeout: 100000,       
 		success: function(data)  
 		{
 			var path = $(data).filter('#name').text();
@@ -175,7 +175,7 @@ $(document).ready(function(){
 			method:"POST",
 			dataType: "html",
 			data:{id: id},
-			timeout: 10000,       
+			timeout: 100000,       
 			success: function(data)  
 			{
 				var path = $(data).filter('#name').text();
